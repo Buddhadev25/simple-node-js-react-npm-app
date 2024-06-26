@@ -50,7 +50,7 @@ Password: ati1234
 #### steps:
   - Followed https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-docker-registry-on-ubuntu-18-04 to host a local registry using`registry:2` docker image
   - This Jenkins pipeline script pulls, tags, and pushes Docker images (postgres, redis, mongo, mongo-express) to a locally hosted registry (localhost:5000) with provided credentials, ensuring they are available for deployment or distribution in a CI/CD environment.
-  - Configured http://localhost:3000/job/Assignment-2/ by seting pipeline script from SCM, https://github.com/Buddhadev25/simple-node-js-react-npm-app.git with script path Assignment-2/Jenkinsfile
+  - Configured http://localhost:3000/job/Assignment-2/ by setting pipeline script from SCM, https://github.com/Buddhadev25/simple-node-js-react-npm-app.git with script path Assignment-2/Jenkinsfile
   - Images are stored in/var/lib/registry/docker/registry/v2/repositories in the local host
   - Docker Compose configuration defines four services:
 
