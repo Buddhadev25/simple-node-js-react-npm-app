@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+
+    environment {
+        REGISTRY_URL = 'localhost:5000'
+        REGISTRY_CREDENTIALS_ID = '43562ad5-8605-4e98-9b79-00f84cbcebc0'
+        IMAGES = 'postgres:latest redis:latest mongo:latest mongo-express:latest'
+    }
+
+    stages {
+        stage('Pull Images') {
+            steps {
+                script {
+                    def imageList = IMAGES.split()
+                    imageList.each { image ->
+                        sh "docker pull ${image}"
+                    }
+                }
+            }
+        }
+
+        stage('Tag Images') {
+            steps {
+                script {
+                    def imageList = IMAGES.split()
+                    imageList.each { image ->
+                        def imageName = image.split(':')[0]
+                        sh "docker tag ${image} ${env.REGISTRY_URL}/${imageName}:latest"
+                    }
+                }
+            }
+        }
+
+        stage('Push Images') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: env.REGISTRY_CREDENTIALS_ID, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    script {
+                        sh "echo $PASSWORD | docker login ${env.REGISTRY_URL} -u $USERNAME --password-stdin"
+                        def imageList = IMAGES.split()
+                        imageList.each { image ->
+                            def imageName = image.split(':')[0]
+                            sh "docker push ${env.REGISTRY_URL}/${imageName}:latest"
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            sh 'docker logout'
+        }
+    }
+}
