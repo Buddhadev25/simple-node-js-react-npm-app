@@ -25,12 +25,14 @@ to execute the build process.
   I've attached screenshots here. 
 
 <p align="center">
-  <img src="./Assignment-1/A1.png">
-  <img src="./Assignment-1/A2.png">
-  <img src="./Assignment-1/Screenshot from 2024-06-23 17-58-21.png">
-  <img src="./Assignment-1/Jenkins.png">
-  <img src="./Assignment-1/web.png">
-  <img src="./Assignment-1/console.png">
+  <img src="./Assignment-1/Images/A1.png">
+  <img src="./Assignment-1/Images/A2.png">
+  <img src="./Assignment-1/Images/A3.png">
+  <img src="./Assignment-1/Images/A4.png">
+  <img src="./Assignment-1/Images/A5.png">
+  <img src="./Assignment-1/Images/A6.png">
+  <img src="./Assignment-1/Images/A7.png">
+  <img src="./Assignment-1/Images/A8.png">
 </p>
 
 ## Assignment-2:
